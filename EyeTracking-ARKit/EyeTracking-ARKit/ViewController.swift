@@ -18,8 +18,10 @@ class ViewController: UIViewController {
     let face = SCNNode()
     let leftEye = EyeNode(color: .green)
     let rightEye = EyeNode(color: .red)
-    
     let phonePlane = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+    
+    var eyeGazeHistory = Array<CGPoint>()
+    let numberOfSmoothUpdates = 25
 
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
@@ -81,6 +83,9 @@ class ViewController: UIViewController {
               let rightPoint = intersectPoints.last else { return }
 
         let centerPoint = CGPoint(x: (leftPoint.x + rightPoint.x)/2, y: -(leftPoint.y + rightPoint.y)/2)
+        
+        eyeGazeHistory.append(centerPoint)
+        eyeGazeHistory = eyeGazeHistory.suffix(numberOfSmoothUpdates)
     }
 }
 
