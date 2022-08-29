@@ -19,9 +19,23 @@ class ViewController: UIViewController {
     let leftEye = EyeNode(color: .green)
     let rightEye = EyeNode(color: .red)
     
+    private lazy var aimImage: UIImageView = {
+        let imageView = UIImageView()
+        let aimImage: UIImage = UIImage(named: "AimImage")!
+        imageView.image = aimImage
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.opacity = 0.4
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupLayout()
+
         sceneView.delegate = self
         
         sceneView.scene.rootNode.addChildNode(face)
@@ -64,5 +78,14 @@ extension ViewController: ARSCNViewDelegate {
             self.face.simdTransform = node.simdTransform
             self.eyeEffect(using: faceAnchor)
         }
+    }
+}
+
+// MARK: - extension
+private extension ViewController {
+    func setupLayout() {
+        view.addSubview(aimImage)
+        aimImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        aimImage.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
 }
