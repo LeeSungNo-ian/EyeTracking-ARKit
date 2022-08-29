@@ -49,6 +49,10 @@ class ViewController: UIViewController {
     
     // MARK: - Custom function
     
+    func eyeEffect(using anchor: ARFaceAnchor) {
+        leftEye.simdTransform = anchor.leftEyeTransform
+        rightEye.simdTransform = anchor.rightEyeTransform
+    }
 }
 
 // MARK: - ARSCNViewDelegate
