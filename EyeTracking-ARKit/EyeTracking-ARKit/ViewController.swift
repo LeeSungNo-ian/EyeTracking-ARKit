@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     let leftEye = EyeNode(color: .green)
     let rightEye = EyeNode(color: .red)
     
+    let phonePlane = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
         let aimImage: UIImage = UIImage(named: "AimImage")!
@@ -41,6 +43,8 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(face)
         face.addChildNode(leftEye)
         face.addChildNode(rightEye)
+        
+        sceneView.scene.rootNode.addChildNode(phonePlane)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +67,20 @@ class ViewController: UIViewController {
     
     // MARK: - Custom function
     
-    func eyeEffect(using anchor: ARFaceAnchor) {
+    func eyeTracking(using anchor: ARFaceAnchor) {
         leftEye.simdTransform = anchor.leftEyeTransform
         rightEye.simdTransform = anchor.rightEyeTransform
+        
+        let intersectPoints = [leftEye, rightEye].compactMap { eye -> CGPoint? in
+            let hitTest = self.phonePlane.hitTestWithSegment(from: eye.target.worldPosition, to: eye.worldPosition)
+
+            return hitTest.first?.screenPosition
+        }
+
+        guard let leftPoint = intersectPoints.first,
+              let rightPoint = intersectPoints.last else { return }
+
+        let centerPoint = CGPoint(x: (leftPoint.x + rightPoint.x)/2, y: -(leftPoint.y + rightPoint.y)/2)
     }
 }
 
@@ -76,7 +91,7 @@ extension ViewController: ARSCNViewDelegate {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         DispatchQueue.main.async {
             self.face.simdTransform = node.simdTransform
-            self.eyeEffect(using: faceAnchor)
+            self.eyeTracking(using: faceAnchor)
         }
     }
 }
