@@ -58,5 +58,11 @@ class ViewController: UIViewController {
 // MARK: - ARSCNViewDelegate
 
 extension ViewController: ARSCNViewDelegate {
-
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        DispatchQueue.main.async {
+            self.face.simdTransform = node.simdTransform
+            self.eyeEffect(using: faceAnchor)
+        }
+    }
 }
