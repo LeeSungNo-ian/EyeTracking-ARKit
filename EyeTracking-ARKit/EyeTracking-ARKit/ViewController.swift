@@ -15,10 +15,18 @@ class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    let face = SCNNode()
+    let leftEye = EyeNode(color: .green)
+    let rightEye = EyeNode(color: .red)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
+        
+        sceneView.scene.rootNode.addChildNode(face)
+        face.addChildNode(leftEye)
+        face.addChildNode(rightEye)
     }
     
     override func viewWillAppear(_ animated: Bool) {
