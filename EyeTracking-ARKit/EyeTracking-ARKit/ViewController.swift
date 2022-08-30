@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         return imageView
     }()
     
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -104,6 +106,7 @@ extension ViewController: ARSCNViewDelegate {
 }
 
 // MARK: - extension
+
 private extension ViewController {
     func setupLayout() {
         view.addSubview(aimImage)
