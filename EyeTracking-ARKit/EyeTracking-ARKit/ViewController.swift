@@ -86,6 +86,8 @@ class ViewController: UIViewController {
         
         eyeGazeHistory.append(centerPoint)
         eyeGazeHistory = eyeGazeHistory.suffix(numberOfSmoothUpdates)
+        
+        aimImage.transform = eyeGazeHistory.averageAffineTransform
     }
 }
 
