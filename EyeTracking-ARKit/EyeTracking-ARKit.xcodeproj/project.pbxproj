@@ -13,6 +13,8 @@
 		0A241D3228BD29BE000469DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3128BD29BE000469DF /* Assets.xcassets */; };
 		0A241D3528BD29BE000469DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3328BD29BE000469DF /* LaunchScreen.storyboard */; };
 		0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3B28BD2A8E000469DF /* EyeNode.swift */; };
+		0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */; };
+		0A241D4128BD3029000469DF /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* Collection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		0A241D3128BD29BE000469DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A241D3428BD29BE000469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A241D3B28BD2A8E000469DF /* EyeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeNode.swift; sourceTree = "<group>"; };
+		0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHitTestResult.swift; sourceTree = "<group>"; };
+		0A241D4028BD3029000469DF /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,21 @@
 				0A241D2828BD29BD000469DF /* AppDelegate.swift */,
 				0A241D2C28BD29BD000469DF /* ViewController.swift */,
 				0A241D3B28BD2A8E000469DF /* EyeNode.swift */,
+				0A241D3D28BD2EEF000469DF /* Extension */,
 				0A241D2E28BD29BD000469DF /* Main.storyboard */,
 				0A241D3128BD29BE000469DF /* Assets.xcassets */,
 				0A241D3328BD29BE000469DF /* LaunchScreen.storyboard */,
 			);
 			path = "EyeTracking-ARKit";
+			sourceTree = "<group>";
+		};
+		0A241D3D28BD2EEF000469DF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */,
+				0A241D4028BD3029000469DF /* Collection.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */,
+				0A241D4128BD3029000469DF /* Collection.swift in Sources */,
+				0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */,
 				0A241D2D28BD29BD000469DF /* ViewController.swift in Sources */,
 				0A241D2928BD29BD000469DF /* AppDelegate.swift in Sources */,
 			);

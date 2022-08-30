@@ -18,15 +18,37 @@ class ViewController: UIViewController {
     let face = SCNNode()
     let leftEye = EyeNode(color: .green)
     let rightEye = EyeNode(color: .red)
+    let phonePlane = SCNNode(geometry: SCNPlane(width: 1, height: 1))
     
+    var eyeGazeHistory = Array<CGPoint>()
+    let numberOfSmoothUpdates = 25
+
+    private lazy var aimImage: UIImageView = {
+        let imageView = UIImageView()
+        let aimImage: UIImage = UIImage(named: "AimImage")!
+        imageView.image = aimImage
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.opacity = 0.4
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+        return imageView
+    }()
+    
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupLayout()
+
         sceneView.delegate = self
         
         sceneView.scene.rootNode.addChildNode(face)
         face.addChildNode(leftEye)
         face.addChildNode(rightEye)
+        
+        sceneView.scene.rootNode.addChildNode(phonePlane)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +71,25 @@ class ViewController: UIViewController {
     
     // MARK: - Custom function
     
-    func eyeEffect(using anchor: ARFaceAnchor) {
+    func eyeTracking(using anchor: ARFaceAnchor) {
         leftEye.simdTransform = anchor.leftEyeTransform
         rightEye.simdTransform = anchor.rightEyeTransform
+        
+        let intersectPoints = [leftEye, rightEye].compactMap { eye -> CGPoint? in
+            let hitTest = self.phonePlane.hitTestWithSegment(from: eye.target.worldPosition, to: eye.worldPosition)
+
+            return hitTest.first?.screenPosition
+        }
+
+        guard let leftPoint = intersectPoints.first,
+              let rightPoint = intersectPoints.last else { return }
+
+        let centerPoint = CGPoint(x: (leftPoint.x + rightPoint.x)/2, y: -(leftPoint.y + rightPoint.y)/2)
+        
+        eyeGazeHistory.append(centerPoint)
+        eyeGazeHistory = eyeGazeHistory.suffix(numberOfSmoothUpdates)
+        
+        aimImage.transform = eyeGazeHistory.averageAffineTransform
     }
 }
 
@@ -62,7 +100,17 @@ extension ViewController: ARSCNViewDelegate {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         DispatchQueue.main.async {
             self.face.simdTransform = node.simdTransform
-            self.eyeEffect(using: faceAnchor)
+            self.eyeTracking(using: faceAnchor)
         }
+    }
+}
+
+// MARK: - extension
+
+private extension ViewController {
+    func setupLayout() {
+        view.addSubview(aimImage)
+        aimImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        aimImage.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
 }
