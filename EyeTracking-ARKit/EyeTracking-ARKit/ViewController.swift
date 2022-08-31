@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     let targetNames = ["BlackTarget", "BlueTarget", "RedTarget", "WhiteTarget"]
     var currentTarget = 0
     
+    var startGameTime = CACurrentMediaTime()
+    
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
         let aimImage: UIImage = UIImage(named: "AimImage")!
@@ -145,6 +147,11 @@ class ViewController: UIViewController {
     }
     
     @objc func createTarget() {
+        guard currentTarget < targets.count - 25 else {
+            endGame()
+            return
+        }
+        
         let target = targets[currentTarget]
         target.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         
@@ -169,6 +176,12 @@ class ViewController: UIViewController {
         selectedTarget.alpha = 0
         
         perform(#selector(createTarget), with: nil, afterDelay: 1.5)
+    }
+    
+    func endGame() {
+        let gameTime = (Int(CACurrentMediaTime() - startGameTime))
+        let alertController = UIAlertController(title: "게임 끝!", message: "소요시간: \(gameTime)", preferredStyle: .alert)
+        present(alertController, animated: true)
     }
 }
 
