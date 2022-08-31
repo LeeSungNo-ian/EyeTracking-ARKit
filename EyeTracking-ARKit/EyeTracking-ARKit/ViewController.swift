@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     
     var targets = [UIImageView]()
     let targetNames = ["BlackTarget", "BlueTarget", "RedTarget", "WhiteTarget"]
+    var currentTarget = 0
     
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
@@ -140,6 +141,17 @@ class ViewController: UIViewController {
         
         self.view.bringSubviewToFront(aimImage)
         targets.shuffle()
+    }
+    
+    func createTarget() {
+        let target = targets[currentTarget]
+        target.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+        
+        UIView.animate(withDuration: 0.5) {
+            target.transform = .identity
+            target.alpha = 1
+        }
+        currentTarget += 1
     }
 }
 
