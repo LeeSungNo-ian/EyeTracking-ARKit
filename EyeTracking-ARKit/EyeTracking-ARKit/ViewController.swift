@@ -48,15 +48,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         createEnemies()
-        
+        setupAddChildNode()
         sceneView.delegate = self
-        
-        sceneView.scene.rootNode.addChildNode(face)
-        face.addChildNode(leftEye)
-        face.addChildNode(rightEye)
-        
-        sceneView.scene.rootNode.addChildNode(phonePlane)
-        
         perform(#selector(createTarget), with: nil, afterDelay: 0.5)
     }
     
@@ -79,6 +72,13 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Custom function
+    
+    func setupAddChildNode() {
+        sceneView.scene.rootNode.addChildNode(face)
+        sceneView.scene.rootNode.addChildNode(phonePlane)
+        face.addChildNode(leftEye)
+        face.addChildNode(rightEye)
+    }
     
     func eyeTracking(using anchor: ARFaceAnchor) {
         if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
