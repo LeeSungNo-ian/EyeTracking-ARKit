@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     var eyeGazeHistory = Array<CGPoint>()
     let numberOfSmoothUpdates = 25
     
+    var targets = [UIImageView]()
+    let targetNames = ["BlackTarget", "BlueTarget", "RedTarget", "WhiteTarget"]
+    
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
         let aimImage: UIImage = UIImage(named: "AimImage")!
@@ -98,6 +101,45 @@ class ViewController: UIViewController {
         eyeGazeHistory = eyeGazeHistory.suffix(numberOfSmoothUpdates)
         
         aimImage.transform = eyeGazeHistory.averageAffineTransform
+    }
+    
+    func createEnemies() {
+        let rowStackView = UIStackView()
+        rowStackView.translatesAutoresizingMaskIntoConstraints = false
+        rowStackView.distribution = .fillEqually
+        rowStackView.axis = .vertical
+        rowStackView.spacing = 20
+        
+        for _ in 1...8 {
+            let colStackView = UIStackView()
+            colStackView.translatesAutoresizingMaskIntoConstraints = false
+            colStackView.distribution = .fillEqually
+            colStackView.axis = .horizontal
+            colStackView.spacing = 20
+            
+            rowStackView.addArrangedSubview(colStackView)
+            
+            for imageName in targetNames {
+                let imageView = UIImageView(image: UIImage(named: imageName))
+                imageView.contentMode = .scaleAspectFit
+                imageView.alpha = 0
+                targets.append(imageView)
+                
+                colStackView.addArrangedSubview(imageView)
+            }
+        }
+        
+        self.view.addSubview(rowStackView)
+        
+        NSLayoutConstraint.activate([
+            rowStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            rowStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            rowStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            rowStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 20)
+        ])
+        
+        self.view.bringSubviewToFront(aimImage)
+        targets.shuffle()
     }
 }
 
