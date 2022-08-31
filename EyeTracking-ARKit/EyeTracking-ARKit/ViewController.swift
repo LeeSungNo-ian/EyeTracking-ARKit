@@ -56,6 +56,8 @@ class ViewController: UIViewController {
         face.addChildNode(rightEye)
         
         sceneView.scene.rootNode.addChildNode(phonePlane)
+        
+        perform(#selector(createTarget), with: nil, afterDelay: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,7 +149,7 @@ class ViewController: UIViewController {
     }
     
     @objc func createTarget() {
-        guard currentTarget < targets.count - 25 else {
+        guard currentTarget < targets.count else {
             endGame()
             return
         }
@@ -175,7 +177,7 @@ class ViewController: UIViewController {
         
         selectedTarget.alpha = 0
         
-        perform(#selector(createTarget), with: nil, afterDelay: 1.5)
+        perform(#selector(createTarget), with: nil, afterDelay: 0.5)
     }
     
     func endGame() {
