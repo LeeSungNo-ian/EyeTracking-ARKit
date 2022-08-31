@@ -10,9 +10,9 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - Properties
-
+    
     @IBOutlet var sceneView: ARSCNView!
     
     let face = SCNNode()
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     var eyeGazeHistory = Array<CGPoint>()
     let numberOfSmoothUpdates = 25
-
+    
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
         let aimImage: UIImage = UIImage(named: "AimImage")!
@@ -32,16 +32,16 @@ class ViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
+        
         return imageView
     }()
     
     // MARK: - Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-
+        
         sceneView.delegate = self
         
         sceneView.scene.rootNode.addChildNode(face)
@@ -72,18 +72,26 @@ class ViewController: UIViewController {
     // MARK: - Custom function
     
     func eyeTracking(using anchor: ARFaceAnchor) {
+        if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
+           let rightEyeBlink = anchor.blendShapes[.eyeBlinkRight] as? Float {
+            if leftEyeBlink > 0.2 && rightEyeBlink > 0.2 {
+                print("깜빡임이 감지 됐습니다!")
+                return
+            }
+        }
+        
         leftEye.simdTransform = anchor.leftEyeTransform
         rightEye.simdTransform = anchor.rightEyeTransform
         
         let intersectPoints = [leftEye, rightEye].compactMap { eye -> CGPoint? in
             let hitTest = self.phonePlane.hitTestWithSegment(from: eye.target.worldPosition, to: eye.worldPosition)
-
+            
             return hitTest.first?.screenPosition
         }
-
+        
         guard let leftPoint = intersectPoints.first,
               let rightPoint = intersectPoints.last else { return }
-
+        
         let centerPoint = CGPoint(x: (leftPoint.x + rightPoint.x)/2, y: -(leftPoint.y + rightPoint.y)/2)
         
         eyeGazeHistory.append(centerPoint)
