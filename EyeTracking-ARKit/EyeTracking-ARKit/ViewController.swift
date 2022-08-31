@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        createEnemies()
         
         sceneView.delegate = self
         
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
         if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
            let rightEyeBlink = anchor.blendShapes[.eyeBlinkRight] as? Float {
             if leftEyeBlink > 0.2 && rightEyeBlink > 0.2 {
-                print("깜빡임이 감지 됐습니다!")
+                shooting()
                 return
             }
         }
@@ -143,7 +144,7 @@ class ViewController: UIViewController {
         targets.shuffle()
     }
     
-    func createTarget() {
+    @objc func createTarget() {
         let target = targets[currentTarget]
         target.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         
@@ -152,6 +153,22 @@ class ViewController: UIViewController {
             target.alpha = 1
         }
         currentTarget += 1
+    }
+    
+    func shooting() {
+        guard let aimFrame = aimImage.superview?.convert(aimImage.frame, to: nil) else { return }
+        
+        let hitTargets = self.targets.filter { target in
+            if target.alpha == 0 { return false }
+            let targetFrame = target.superview!.convert(target.frame, to: nil)
+            return targetFrame.intersects(aimFrame)
+        }
+        
+        guard let selectedTarget = hitTargets.first else { return }
+        
+        selectedTarget.alpha = 0
+        
+        perform(#selector(createTarget), with: nil, afterDelay: 1.5)
     }
 }
 
