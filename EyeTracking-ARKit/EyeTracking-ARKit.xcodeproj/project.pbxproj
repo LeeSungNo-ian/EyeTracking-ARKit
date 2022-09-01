@@ -17,6 +17,7 @@
 		0A241D4128BD3029000469DF /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* Collection.swift */; };
 		0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D5128C0AA75000469DF /* MainPageViewController.swift */; };
 		0AD8703228C0D96600F754AA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8703128C0D96600F754AA /* Color.swift */; };
+		0AD8703428C1457400F754AA /* DungGeunMo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8703328C1457400F754AA /* DungGeunMo.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		0A241D4028BD3029000469DF /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		0A241D5128C0AA75000469DF /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		0AD8703128C0D96600F754AA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0AD8703328C1457400F754AA /* DungGeunMo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				0A241D5328C0AA81000469DF /* Controller */,
 				0A241D3D28BD2EEF000469DF /* Extension */,
 				0A241D2E28BD29BD000469DF /* Main.storyboard */,
+				0AD8703328C1457400F754AA /* DungGeunMo.ttf */,
 				0A241D3128BD29BE000469DF /* Assets.xcassets */,
 				0A241D3328BD29BE000469DF /* LaunchScreen.storyboard */,
 			);
@@ -154,6 +157,7 @@
 				0A241D3528BD29BE000469DF /* LaunchScreen.storyboard in Resources */,
 				0A241D3228BD29BE000469DF /* Assets.xcassets in Resources */,
 				0A241D3028BD29BD000469DF /* Main.storyboard in Resources */,
+				0AD8703428C1457400F754AA /* DungGeunMo.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
