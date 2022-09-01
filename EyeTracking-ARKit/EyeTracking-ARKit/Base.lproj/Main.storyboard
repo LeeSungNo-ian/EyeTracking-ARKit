@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,10 +16,33 @@
                     <view key="view" contentMode="scaleToFill" id="gvX-HL-dGv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycG-fN-wad">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-wS-ATf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="MainBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Vbr-ch-xOc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vbr-ch-xOc" firstAttribute="bottom" secondItem="ycG-fN-wad" secondAttribute="bottom" id="957-Cy-PNp"/>
+                            <constraint firstItem="ycG-fN-wad" firstAttribute="leading" secondItem="Vbr-ch-xOc" secondAttribute="leading" id="9uF-y8-9ho"/>
+                            <constraint firstItem="ycG-fN-wad" firstAttribute="top" secondItem="gvX-HL-dGv" secondAttribute="top" id="H1f-DA-CYm"/>
+                            <constraint firstItem="dPp-wS-ATf" firstAttribute="leading" secondItem="Vbr-ch-xOc" secondAttribute="leading" id="Wn8-e3-jQm"/>
+                            <constraint firstAttribute="bottom" secondItem="dPp-wS-ATf" secondAttribute="bottom" id="bmQ-ZF-JSs"/>
+                            <constraint firstItem="Vbr-ch-xOc" firstAttribute="trailing" secondItem="dPp-wS-ATf" secondAttribute="trailing" id="kLz-jl-8bF"/>
+                            <constraint firstItem="Vbr-ch-xOc" firstAttribute="trailing" secondItem="ycG-fN-wad" secondAttribute="trailing" id="uox-Lz-DoS"/>
+                            <constraint firstItem="dPp-wS-ATf" firstAttribute="top" secondItem="gvX-HL-dGv" secondAttribute="top" id="vBz-7N-kFu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tgJ-fw-ggU"/>
+                    <connections>
+                        <outlet property="mainVIew" destination="dPp-wS-ATf" id="JvT-YW-bsW"/>
+                        <outlet property="sceneView" destination="ycG-fN-wad" id="DQb-OP-pFZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTE-F4-KYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,6 +80,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KRD-09-55O">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oc3-pO-J1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SQf-Gl-Qhq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="651-Ly-xsj">
@@ -67,12 +92,14 @@
                         <segue destination="qEn-lf-Pj8" kind="relationship" relationship="rootViewController" id="IqC-me-af9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oc3-pO-J1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-759.4202898550725" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="MainBackgroundColor">
+            <color red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -13,6 +13,9 @@ class MainPageViewController: UIViewController {
     
     // MARK: - Properties
 
+    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var mainVIew: UIView!
+    
     private lazy var cryScleraImage: UIImageView = {
         let imageView = UIImageView()
         let cryScleraImage: UIImage = UIImage(named: "CrySclera")!
@@ -38,17 +41,36 @@ class MainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.MainBackgroundColor
         UIApplication.shared.isIdleTimerDisabled = true
         
         configureUI()
         repeatAnimation()
+        
+        sceneView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard ARFaceTrackingConfiguration.isSupported else {
+            print("지원하지 않는 디바이스 입니다.")
+            return
+        }
+
+        let configuration = ARFaceTrackingConfiguration()
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        sceneView.session.pause()
     }
     
     //MARK: - Helpers
 
     func configureUI() {
-        view.addSubview(cryScleraImage)
+        mainVIew.addSubview(cryScleraImage)
         cryScleraImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         cryScleraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -59,9 +81,22 @@ class MainPageViewController: UIViewController {
     
     // MARK: - Custom function
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
-            navigationController?.pushViewController(vc, animated: true)
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+
+    func eyeTracking(using anchor: ARFaceAnchor) {
+        if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
+           let rightEyeBlink = anchor.blendShapes[.eyeBlinkRight] as? Float {
+            if leftEyeBlink > 0.7 && rightEyeBlink > 0.7 {
+                print("감지가 됩니다.")
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+                return
+            }
         }
     }
     
@@ -69,6 +104,15 @@ class MainPageViewController: UIViewController {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
             let scale = CGAffineTransform(translationX: -35, y: 10)
             self.pupilImage.transform = scale
+        }
+    }
+}
+
+extension MainPageViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        DispatchQueue.main.async {
+            self.eyeTracking(using: faceAnchor)
         }
     }
 }
