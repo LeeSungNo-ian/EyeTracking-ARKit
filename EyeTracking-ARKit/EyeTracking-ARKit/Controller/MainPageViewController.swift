@@ -42,6 +42,7 @@ class MainPageViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
         
         configureUI()
+        repeatAnimation()
     }
     
     //MARK: - Helpers
@@ -53,7 +54,7 @@ class MainPageViewController: UIViewController {
         
         cryScleraImage.addSubview(pupilImage)
         pupilImage.topAnchor.constraint(equalTo: cryScleraImage.topAnchor, constant: 32).isActive = true
-        pupilImage.trailingAnchor.constraint(equalTo: cryScleraImage.trailingAnchor, constant: -25).isActive = true
+        pupilImage.trailingAnchor.constraint(equalTo: cryScleraImage.trailingAnchor, constant: -20).isActive = true
     }
     
     // MARK: - Custom function
@@ -61,6 +62,13 @@ class MainPageViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func repeatAnimation() {
+        UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
+            let scale = CGAffineTransform(translationX: -35, y: 10)
+            self.pupilImage.transform = scale
         }
     }
 }
