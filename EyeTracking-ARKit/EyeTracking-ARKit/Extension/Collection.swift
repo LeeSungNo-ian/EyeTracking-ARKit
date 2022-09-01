@@ -12,12 +12,12 @@ extension Collection where Element == CGPoint {
     var averageAffineTransform: CGAffineTransform {
         var x: CGFloat = 0
         var y: CGFloat = 0
-
+        
         for item in self {
             x += item.x
             y += item.y
         }
-
+        
         let elementCount = CGFloat(self.count)
         return CGAffineTransform(translationX: x / elementCount, y: y / elementCount)
     }
