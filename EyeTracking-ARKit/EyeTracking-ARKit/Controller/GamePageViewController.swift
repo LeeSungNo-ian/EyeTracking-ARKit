@@ -72,7 +72,7 @@ class GamePageViewController: UIViewController {
         
         sceneView.session.pause()
         
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // MARK: - Custom function

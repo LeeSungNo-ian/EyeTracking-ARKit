@@ -6,13 +6,11 @@
 //
 
 import UIKit
-import SceneKit
-import ARKit
 
 class MainPageViewController: UIViewController {
     
     // MARK: - Properties
-
+    
     @IBOutlet weak var mainVIew: UIView!
     
     private lazy var cryScleraImage: UIImageView = {
@@ -21,7 +19,7 @@ class MainPageViewController: UIViewController {
         imageView.image = cryScleraImage
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return imageView
     }()
     
@@ -31,15 +29,15 @@ class MainPageViewController: UIViewController {
         imageView.image = pupilImage
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return imageView
     }()
     
     // MARK: - Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         UIApplication.shared.isIdleTimerDisabled = true
         
         configureUI()
@@ -47,7 +45,7 @@ class MainPageViewController: UIViewController {
     }
     
     //MARK: - Helpers
-
+    
     func configureUI() {
         mainVIew.addSubview(cryScleraImage)
         cryScleraImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
@@ -59,7 +57,7 @@ class MainPageViewController: UIViewController {
     }
     
     // MARK: - Custom function
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
             navigationController?.pushViewController(vc, animated: true)

@@ -16,7 +16,7 @@ extension SCNHitTestResult {
         let sizeResolution = UIScreen.main.bounds.size
         let screenX = CGFloat(localCoordinates.x) / physicallIphoneSize.width * sizeResolution.width
         let screenY = CGFloat(localCoordinates.y) / physicallIphoneSize.height * sizeResolution.height
-
+        
         return CGPoint(x: screenX, y: screenY)
     }
 }
