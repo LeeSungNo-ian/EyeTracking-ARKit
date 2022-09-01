@@ -63,12 +63,16 @@ class GamePageViewController: UIViewController {
         
         let configuration = ARFaceTrackingConfiguration()
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         sceneView.session.pause()
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // MARK: - Custom function
