@@ -8,25 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		0A241D2928BD29BD000469DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D2828BD29BD000469DF /* AppDelegate.swift */; };
-		0A241D2D28BD29BD000469DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D2C28BD29BD000469DF /* ViewController.swift */; };
+		0A241D2D28BD29BD000469DF /* GamePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D2C28BD29BD000469DF /* GamePageViewController.swift */; };
 		0A241D3028BD29BD000469DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D2E28BD29BD000469DF /* Main.storyboard */; };
 		0A241D3228BD29BE000469DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3128BD29BE000469DF /* Assets.xcassets */; };
 		0A241D3528BD29BE000469DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3328BD29BE000469DF /* LaunchScreen.storyboard */; };
 		0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3B28BD2A8E000469DF /* EyeNode.swift */; };
 		0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */; };
 		0A241D4128BD3029000469DF /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* Collection.swift */; };
+		0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D5128C0AA75000469DF /* MainPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A241D2528BD29BD000469DF /* EyeTracking-ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EyeTracking-ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A241D2828BD29BD000469DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A241D2C28BD29BD000469DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A241D2C28BD29BD000469DF /* GamePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageViewController.swift; sourceTree = "<group>"; };
 		0A241D2F28BD29BD000469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A241D3128BD29BE000469DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A241D3428BD29BE000469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A241D3B28BD2A8E000469DF /* EyeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeNode.swift; sourceTree = "<group>"; };
 		0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHitTestResult.swift; sourceTree = "<group>"; };
 		0A241D4028BD3029000469DF /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		0A241D5128C0AA75000469DF /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				0A241D2828BD29BD000469DF /* AppDelegate.swift */,
-				0A241D2C28BD29BD000469DF /* ViewController.swift */,
 				0A241D3B28BD2A8E000469DF /* EyeNode.swift */,
+				0A241D5328C0AA81000469DF /* Controller */,
 				0A241D3D28BD2EEF000469DF /* Extension */,
 				0A241D2E28BD29BD000469DF /* Main.storyboard */,
 				0A241D3128BD29BE000469DF /* Assets.xcassets */,
@@ -77,6 +79,15 @@
 				0A241D4028BD3029000469DF /* Collection.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		0A241D5328C0AA81000469DF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A241D5128C0AA75000469DF /* MainPageViewController.swift */,
+				0A241D2C28BD29BD000469DF /* GamePageViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +164,8 @@
 				0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */,
 				0A241D4128BD3029000469DF /* Collection.swift in Sources */,
 				0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */,
-				0A241D2D28BD29BD000469DF /* ViewController.swift in Sources */,
+				0A241D2D28BD29BD000469DF /* GamePageViewController.swift in Sources */,
+				0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */,
 				0A241D2928BD29BD000469DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

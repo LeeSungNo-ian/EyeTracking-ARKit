@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GamePageViewController.swift
 //  EyeTracking-ARKit
 //
 //  Created by 이성노 on 2022/08/30.
@@ -9,7 +9,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController {
+class GamePageViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         createEnemies()
         setupAddChildNode()
         sceneView.delegate = self
-        perform(#selector(createTarget), with: nil, afterDelay: 0.5)
+        perform(#selector(createTarget), with: nil, afterDelay: 0.1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,7 +177,7 @@ class ViewController: UIViewController {
         
         selectedTarget.alpha = 0
         
-        perform(#selector(createTarget), with: nil, afterDelay: 0.5)
+        perform(#selector(createTarget), with: nil, afterDelay: 0.1)
     }
     
     func endGame() {
@@ -189,7 +189,7 @@ class ViewController: UIViewController {
 
 // MARK: - ARSCNViewDelegate
 
-extension ViewController: ARSCNViewDelegate {
+extension GamePageViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         DispatchQueue.main.async {
@@ -201,7 +201,7 @@ extension ViewController: ARSCNViewDelegate {
 
 // MARK: - extension
 
-private extension ViewController {
+private extension GamePageViewController {
     func setupLayout() {
         view.addSubview(aimImage)
         aimImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
