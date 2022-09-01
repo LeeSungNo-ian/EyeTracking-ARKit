@@ -161,7 +161,7 @@ class GamePageViewController: UIViewController {
         let target = targets[currentTarget]
         target.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.1) {
             target.transform = .identity
             target.alpha = 1
         }
@@ -188,6 +188,13 @@ class GamePageViewController: UIViewController {
         let gameTime = (Int(CACurrentMediaTime() - startGameTime))
         let alertController = UIAlertController(title: "게임 끝!", message: "소요시간: \(gameTime)", preferredStyle: .alert)
         present(alertController, animated: true)
+        perform(#selector(backToMainMenu), with: nil, afterDelay: 4.0)
+    }
+    
+    @objc func backToMainMenu() {
+        dismiss(animated: true) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
 
