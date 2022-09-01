@@ -45,8 +45,6 @@ class MainPageViewController: UIViewController {
         
         configureUI()
         repeatAnimation()
-        
-        sceneView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,22 +79,9 @@ class MainPageViewController: UIViewController {
     
     // MARK: - Custom function
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-
-    func eyeTracking(using anchor: ARFaceAnchor) {
-        if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
-           let rightEyeBlink = anchor.blendShapes[.eyeBlinkRight] as? Float {
-            if leftEyeBlink > 0.7 && rightEyeBlink > 0.7 {
-                print("감지가 됩니다.")
-                if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
-                    navigationController?.pushViewController(vc, animated: true)
-                }
-                return
-            }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "GamePageVC") {
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -104,15 +89,6 @@ class MainPageViewController: UIViewController {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
             let scale = CGAffineTransform(translationX: -35, y: 10)
             self.pupilImage.transform = scale
-        }
-    }
-}
-
-extension MainPageViewController: ARSCNViewDelegate {
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-        DispatchQueue.main.async {
-            self.eyeTracking(using: faceAnchor)
         }
     }
 }
