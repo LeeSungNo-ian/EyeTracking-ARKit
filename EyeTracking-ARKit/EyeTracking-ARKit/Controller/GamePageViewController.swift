@@ -24,7 +24,7 @@ class GamePageViewController: UIViewController {
     let numberOfSmoothUpdates = 25
     
     var targets = [UIImageView]()
-    let targetNames = ["BlackTarget", "BlueTarget", "RedTarget", "WhiteTarget"]
+    let targetNames = ["EyeTarget1", "EyeTarget2", "EyeTarget3", "EyeTarget4"]
     var currentTarget = 0
     
     var startGameTime = CACurrentMediaTime()
