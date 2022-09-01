@@ -16,6 +16,7 @@
 		0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */; };
 		0A241D4128BD3029000469DF /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* Collection.swift */; };
 		0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D5128C0AA75000469DF /* MainPageViewController.swift */; };
+		0AD8703228C0D96600F754AA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8703128C0D96600F754AA /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHitTestResult.swift; sourceTree = "<group>"; };
 		0A241D4028BD3029000469DF /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		0A241D5128C0AA75000469DF /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		0AD8703128C0D96600F754AA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */,
 				0A241D4028BD3029000469DF /* Collection.swift */,
+				0AD8703128C0D96600F754AA /* Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */,
 				0A241D4128BD3029000469DF /* Collection.swift in Sources */,
+				0AD8703228C0D96600F754AA /* Color.swift in Sources */,
 				0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */,
 				0A241D2D28BD29BD000469DF /* GamePageViewController.swift in Sources */,
 				0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */,
