@@ -56,13 +56,10 @@ class GamePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard ARFaceTrackingConfiguration.isSupported else {
-            print("지원하지 않는 디바이스 입니다.")
-            return
+        if ARFaceTrackingConfiguration.isSupported {
+            let configuration = ARFaceTrackingConfiguration()
+            sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         }
-        
-        let configuration = ARFaceTrackingConfiguration()
-        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
