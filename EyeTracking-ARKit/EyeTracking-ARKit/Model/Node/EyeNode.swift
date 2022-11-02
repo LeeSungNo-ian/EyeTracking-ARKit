@@ -8,7 +8,7 @@
 import UIKit
 import SceneKit
 
-class EyeNode: SCNNode {
+final class EyeNode: SCNNode {
     let target = SCNNode()
     
     init(color: UIColor) {

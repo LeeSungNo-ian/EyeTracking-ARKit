@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
+final class MainPageViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -46,7 +46,7 @@ class MainPageViewController: UIViewController {
     
     //MARK: - Helpers
     
-    func configureUI() {
+    private func configureUI() {
         mainVIew.addSubview(cryScleraImage)
         cryScleraImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         cryScleraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -64,7 +64,7 @@ class MainPageViewController: UIViewController {
         }
     }
     
-    func repeatAnimation() {
+    private func repeatAnimation() {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
             let scale = CGAffineTransform(translationX: -35, y: 10)
             self.pupilImage.transform = scale

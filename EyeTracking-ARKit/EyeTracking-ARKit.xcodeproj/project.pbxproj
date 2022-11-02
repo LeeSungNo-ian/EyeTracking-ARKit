@@ -13,8 +13,8 @@
 		0A241D3228BD29BE000469DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3128BD29BE000469DF /* Assets.xcassets */; };
 		0A241D3528BD29BE000469DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A241D3328BD29BE000469DF /* LaunchScreen.storyboard */; };
 		0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3B28BD2A8E000469DF /* EyeNode.swift */; };
-		0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */; };
-		0A241D4128BD3029000469DF /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* Collection.swift */; };
+		0A241D3F28BD2F00000469DF /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D3E28BD2F00000469DF /* CGPoint.swift */; };
+		0A241D4128BD3029000469DF /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D4028BD3029000469DF /* CGAffineTransform.swift */; };
 		0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A241D5128C0AA75000469DF /* MainPageViewController.swift */; };
 		0AD8703228C0D96600F754AA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8703128C0D96600F754AA /* Color.swift */; };
 		0AD8703428C1457400F754AA /* DungGeunMo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8703328C1457400F754AA /* DungGeunMo.ttf */; };
@@ -28,8 +28,8 @@
 		0A241D3128BD29BE000469DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A241D3428BD29BE000469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A241D3B28BD2A8E000469DF /* EyeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeNode.swift; sourceTree = "<group>"; };
-		0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHitTestResult.swift; sourceTree = "<group>"; };
-		0A241D4028BD3029000469DF /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		0A241D3E28BD2F00000469DF /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		0A241D4028BD3029000469DF /* CGAffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAffineTransform.swift; sourceTree = "<group>"; };
 		0A241D5128C0AA75000469DF /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		0AD8703128C0D96600F754AA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0AD8703328C1457400F754AA /* DungGeunMo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.ttf; sourceTree = "<group>"; };
@@ -66,9 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				0A241D2828BD29BD000469DF /* AppDelegate.swift */,
-				0A241D3B28BD2A8E000469DF /* EyeNode.swift */,
-				0A241D5328C0AA81000469DF /* Controller */,
 				0A241D3D28BD2EEF000469DF /* Extension */,
+				0A6C22512911F9B50067853A /* Model */,
+				0A241D5328C0AA81000469DF /* Controller */,
 				0A241D2E28BD29BD000469DF /* Main.storyboard */,
 				0AD8703328C1457400F754AA /* DungGeunMo.ttf */,
 				0A241D3128BD29BE000469DF /* Assets.xcassets */,
@@ -80,8 +80,8 @@
 		0A241D3D28BD2EEF000469DF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0A241D3E28BD2F00000469DF /* SCNHitTestResult.swift */,
-				0A241D4028BD3029000469DF /* Collection.swift */,
+				0A241D3E28BD2F00000469DF /* CGPoint.swift */,
+				0A241D4028BD3029000469DF /* CGAffineTransform.swift */,
 				0AD8703128C0D96600F754AA /* Color.swift */,
 			);
 			path = Extension;
@@ -94,6 +94,22 @@
 				0A241D2C28BD29BD000469DF /* GamePageViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A6C22502911F99B0067853A /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				0A241D3B28BD2A8E000469DF /* EyeNode.swift */,
+			);
+			path = Node;
+			sourceTree = "<group>";
+		};
+		0A6C22512911F9B50067853A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A6C22502911F99B0067853A /* Node */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,9 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A241D3C28BD2A8E000469DF /* EyeNode.swift in Sources */,
-				0A241D4128BD3029000469DF /* Collection.swift in Sources */,
+				0A241D4128BD3029000469DF /* CGAffineTransform.swift in Sources */,
 				0AD8703228C0D96600F754AA /* Color.swift in Sources */,
-				0A241D3F28BD2F00000469DF /* SCNHitTestResult.swift in Sources */,
+				0A241D3F28BD2F00000469DF /* CGPoint.swift in Sources */,
 				0A241D2D28BD29BD000469DF /* GamePageViewController.swift in Sources */,
 				0A241D5228C0AA75000469DF /* MainPageViewController.swift in Sources */,
 				0A241D2928BD29BD000469DF /* AppDelegate.swift in Sources */,

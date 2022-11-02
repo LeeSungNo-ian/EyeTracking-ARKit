@@ -9,25 +9,25 @@ import UIKit
 import SceneKit
 import ARKit
 
-class GamePageViewController: UIViewController {
+final class GamePageViewController: UIViewController {
     
     // MARK: - Properties
-    
+
     @IBOutlet var sceneView: ARSCNView!
     
-    let face = SCNNode()
-    let leftEye = EyeNode(color: .green)
-    let rightEye = EyeNode(color: .red)
-    let phonePlane = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+    private let face = SCNNode()
+    private let leftEye = EyeNode(color: .green)
+    private let rightEye = EyeNode(color: .red)
+    private let phonePlane = SCNNode(geometry: SCNPlane(width: 1, height: 1))
     
-    var eyeGazeHistory = Array<CGPoint>()
-    let numberOfSmoothUpdates = 25
+    private var eyeGazeHistory = Array<CGPoint>()
+    private var numberOfSmoothUpdates = 25
     
-    var targets = [UIImageView]()
-    let targetNames = ["EyeTarget1", "EyeTarget2", "EyeTarget3", "EyeTarget4"]
-    var currentTarget = 0
+    private var targets = [UIImageView]()
+    private let targetNames = ["EyeTarget1", "EyeTarget2", "EyeTarget3", "EyeTarget4"]
+    private var currentTarget = 0
     
-    var startGameTime = CACurrentMediaTime()
+    private var startGameTime = CACurrentMediaTime()
     
     private lazy var aimImage: UIImageView = {
         let imageView = UIImageView()
@@ -74,14 +74,14 @@ class GamePageViewController: UIViewController {
     
     // MARK: - Custom function
     
-    func setupAddChildNode() {
+    private func setupAddChildNode() {
         sceneView.scene.rootNode.addChildNode(face)
         sceneView.scene.rootNode.addChildNode(phonePlane)
         face.addChildNode(leftEye)
         face.addChildNode(rightEye)
     }
     
-    func eyeTracking(using anchor: ARFaceAnchor) {
+    private func eyeTracking(using anchor: ARFaceAnchor) {
         if let leftEyeBlink = anchor.blendShapes[.eyeBlinkLeft] as? Float,
            let rightEyeBlink = anchor.blendShapes[.eyeBlinkRight] as? Float {
             if leftEyeBlink > 0.2 && rightEyeBlink > 0.2 {
@@ -110,7 +110,7 @@ class GamePageViewController: UIViewController {
         aimImage.transform = eyeGazeHistory.averageAffineTransform
     }
     
-    func createEnemies() {
+    private func createEnemies() {
         let rowStackView = UIStackView()
         rowStackView.translatesAutoresizingMaskIntoConstraints = false
         rowStackView.distribution = .fillEqually
@@ -149,7 +149,7 @@ class GamePageViewController: UIViewController {
         targets.shuffle()
     }
     
-    @objc func createTarget() {
+    @objc private func createTarget() {
         guard currentTarget < targets.count else {
             endGame()
             return
@@ -165,7 +165,7 @@ class GamePageViewController: UIViewController {
         currentTarget += 1
     }
     
-    func shooting() {
+    private func shooting() {
         guard let aimFrame = aimImage.superview?.convert(aimImage.frame, to: nil) else { return }
         
         let hitTargets = self.targets.filter { target in
@@ -181,14 +181,14 @@ class GamePageViewController: UIViewController {
         perform(#selector(createTarget), with: nil, afterDelay: 0.1)
     }
     
-    func endGame() {
+    private func endGame() {
         let gameTime = (Int(CACurrentMediaTime() - startGameTime))
         let alertController = UIAlertController(title: "게임 끝!", message: "소요시간: \(gameTime)", preferredStyle: .alert)
         present(alertController, animated: true)
         perform(#selector(backToMainMenu), with: nil, afterDelay: 4.0)
     }
     
-    @objc func backToMainMenu() {
+    @objc private func backToMainMenu() {
         dismiss(animated: true) {
             self.navigationController?.popToRootViewController(animated: true)
         }
