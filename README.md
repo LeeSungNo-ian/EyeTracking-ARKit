@@ -59,6 +59,12 @@
 
 <br>
 
+## 🤔 고민한 점
+- [SCNNode Layer 계층구조는 어떻게 이루어져 있을까?](https://github.com/LeeSungNo-ian/EyeTracking-ARKit/pull/2)
+- [ML 임계점을 조절하여 최상의 퍼포먼스를 낼 수 있을까?](https://github.com/LeeSungNo-ian/EyeTracking-ARKit/pull/4)
+
+<br>
+
 ## 💡 앱 사용방법
 
 꿈뻑이는 사용자의 시선을 쫓아 잦은 눈 깜빡임을 도와줍니다.
