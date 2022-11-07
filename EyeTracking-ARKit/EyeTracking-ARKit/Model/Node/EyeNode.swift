@@ -28,8 +28,8 @@ final class EyeNode: SCNNode {
         
         let node = SCNNode(geometry: cylinder)
         node.eulerAngles.x = .pi/2
-        node.position.z = 0.075
-        node.opacity = 0.4
+        node.position.z = Float(NodeDataStatus.positionZ.rawValue)
+        node.opacity = NodeDataStatus.opacity.rawValue
 
         addChildNode(node)
     }
@@ -39,4 +39,9 @@ final class EyeNode: SCNNode {
         
         addChildNode(target)
     }
+}
+
+enum NodeDataStatus: CGFloat {
+    case positionZ = 0.075
+    case opacity = 0.4
 }
