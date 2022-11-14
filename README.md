@@ -48,10 +48,15 @@
 
 ## 🛠 기술적 도전
 > `ARKit`
-- 사용자의 시선을 추적하는 기능을 구현하기 위해 `ARKit`의 `ARFaceTrackingConfiguration`를 기반으로 Node를 활용했습니다.
+- 시선 추적 기능
+  - ‘hitTestWithSegment’ 메서드를 활용해 좌안, 우안 시선 포인트의 교차점 x, y 좌표값을 실시간으로 받아옵니다.
+  - 좌표값들의 배열을 생성한 후 평균을 내어 사용자의 시선 좌표값을 측정합니다.
+
+- 눈 깜빡임 인식 기능
+  - ‘ARFaceAnchor’의 프로퍼티 ‘eyeBlinkRight’, ‘eyeBlinkLeft’ 의 값을 측정하여 눈 깜빡임을 감지합니다.
 
 > `SceneKit`
-- Node를 통해 `eyeBlinkRight`, `eyeBlinkleft`를 인식하기 위해 `SceneKit`을 사용했습니다.
+- 사용자의 눈을 Node로 인식하기 위해 ‘SceneKit’를 사용했습니다.
 
 > `ML 임계점`
 - ML에서 최고의 성능을 낼 수 있도록 threshold를 바꿔 적당한 수치값을 찾는 과정을 Swift에서 함수 `suffix`를 통해 학습했습니다.
