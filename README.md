@@ -24,7 +24,7 @@
 
 ## 👀 프로젝트 소개
 
-- 미디어 사용량이 많은 현대인들이 눈 피로도를 풀 수 있도록 눈 깜빡임을 유도하는 앱 입니다.
+- 미디어 사용량이 많은 현대인들이 눈 피로를 풀 수 있도록 눈 깜빡임을 유도하는 앱 입니다.
 - ‘ARKit’ 을 사용해 사용자의 시선을 추적하는 기능을 구현했으며, 눈 깜빡임을 인식해 화면에 보여지는 타겟을 제거하는 기능을 구현했습니다.
   
 <br>
@@ -51,7 +51,7 @@
 - 사용자의 시선을 추적하는 기능을 구현하기 위해 `ARKit`의 `ARFaceTrackingConfiguration`를 기반으로 Node를 활용했습니다.
 
 > `SceneKit`
-- `eyeBlinkRight`, `eyeBlinkleft`를 통해 눈 깜빡임을 인식하기 위해 `SceneKit`을 사용했습니다.
+- Node를 통해 `eyeBlinkRight`, `eyeBlinkleft`를 인식하기 위해 `SceneKit`을 사용했습니다.
 
 > `ML 임계점`
 - ML에서 최고의 성능을 낼 수 있도록 threshold를 바꿔 적당한 수치값을 찾는 과정을 Swift에서 함수 `suffix`를 통해 학습했습니다.
